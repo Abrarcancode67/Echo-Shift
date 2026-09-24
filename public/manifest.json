@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "FreeAppStore Guidelines",
+  "short_name": "Guidelines",
+  "description": "Official platform requirements, design tokens, and developer approval checklist for FreeAppStore applications.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1e40af",
+  "background_color": "#fbfaf6",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
