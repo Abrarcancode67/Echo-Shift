@@ -3,7 +3,12 @@
 :root {
   color-scheme: light dark;
 
-  /* App Sizing Specs (Template tokens --paper, --ink, --accent, --muted, --line are owned by FreeAppStore) */
+  /* Brand tokens required by FreeAppStore */
+  --paper: #fbfaf6;
+  --ink: #191b1f;
+  --accent: #1e40af;
+
+  /* App Sizing Specs */
   --sidebar-w: 17rem;
   --radius-card: 1.25rem;
   --radius-button: 0.75rem;
