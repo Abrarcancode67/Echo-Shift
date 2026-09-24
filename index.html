@@ -44,6 +44,12 @@
       --shadow-card: 0 8px 30px -4px rgba(0, 0, 0, 0.6);
     }
 
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+      box-sizing: border-box;
+    }
+
     body {
       background-color: var(--bg-main);
       color: var(--text-main);
@@ -53,6 +59,8 @@
       flex-direction: column;
       line-height: 1.5;
       overflow-x: hidden;
+      max-width: 100vw;
+      box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -66,6 +74,8 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
+      box-sizing: border-box;
+      overflow-x: hidden;
     }
 
     /* Header */
@@ -210,6 +220,9 @@
       flex-direction: column;
       gap: 14px;
       position: relative;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .card-header {
@@ -276,10 +289,105 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 14px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .source-panel.active {
       display: flex;
+    }
+
+    /* Spoken Voice Demo Sub-Card Responsive Layout */
+    .spoken-controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .spoken-select-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .spoken-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .spoken-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      outline: none;
+      width: 100%;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+      min-width: 0;
+      cursor: pointer;
+    }
+
+    .spoken-select:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .spoken-select option {
+      background-color: var(--bg-card);
+      color: var(--text-main);
+    }
+
+    .spoken-loop-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .spoken-action-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .spoken-play-btn {
+      flex-shrink: 0;
+    }
+
+    .spoken-hint-text {
+      font-size: 0.74rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      min-width: 0;
     }
 
     /* Visualizer Canvas Area */
@@ -430,6 +538,9 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .monitor-header {
@@ -611,6 +722,9 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .recording-timer {
@@ -709,6 +823,41 @@
         height: 160px;
       }
     }
+
+    @media (max-width: 600px) {
+      .spoken-controls-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .spoken-select-group {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 6px;
+      }
+      .spoken-label {
+        align-self: flex-start;
+      }
+      .spoken-select {
+        width: 100%;
+        max-width: 100%;
+      }
+      .spoken-loop-label {
+        align-self: flex-start;
+      }
+      .spoken-action-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .spoken-play-btn {
+        width: 100%;
+      }
+      .source-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
@@ -794,28 +943,28 @@
 
         <!-- Panel 1: Spoken Voice Demo (Real Human Voice) -->
         <div class="source-panel active" id="panelSpoken">
-          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <label for="demoVoiceSelect" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Spoken Clip:</label>
-              <select id="demoVoiceSelect" style="background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-main); font-size: 0.78rem; padding: 6px 10px; border-radius: var(--radius-sm); outline: none;">
+          <div class="spoken-controls-row">
+            <div class="spoken-select-group">
+              <label for="demoVoiceSelect" class="spoken-label">Spoken Clip:</label>
+              <select id="demoVoiceSelect" class="spoken-select">
                 <option value="female">Clear Voice A ("Hello! This is a test...")</option>
                 <option value="male">Clear Voice B ("Testing EchoShift voice changer...")</option>
               </select>
             </div>
-            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--text-muted); cursor: pointer;">
+            <label class="spoken-loop-label">
               <input type="checkbox" id="demoLoopToggle" checked>
               <span>Loop Continuous</span>
             </label>
           </div>
 
-          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button id="btnPlayDemo" class="btn btn-primary" onclick="toggleSpokenDemo()">
+          <div class="spoken-action-row">
+            <button id="btnPlayDemo" class="btn btn-primary spoken-play-btn" onclick="toggleSpokenDemo()">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"/>
               </svg>
               <span id="btnPlayDemoLabel">Play Spoken Demo</span>
             </button>
-            <span style="font-size: 0.74rem; color: var(--text-dim); display: flex; align-items: center;">
+            <span class="spoken-hint-text">
               Real human speech sample. Click any filter preset to hear instant transformations!
             </span>
           </div>
