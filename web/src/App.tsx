@@ -67,6 +67,19 @@ export default function App() {
         )}
         {activeTab === 'architecture' && <ArchitectureView />}
         {activeTab === 'audit' && <AuditView />}
+
+        {/* Footer with Store Link for FreeAppStore compliance */}
+        <footer className="mt-12 pt-6 border-t border-[var(--line)] text-center text-xs text-[var(--muted)] flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span>EchoShift &bull; In-Browser Audio DSP Engine</span>
+          <a
+            href="https://freeappstore.online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--accent)] hover:underline font-semibold inline-flex items-center gap-1.5"
+          >
+            Built for freeappstore.online
+          </a>
+        </footer>
       </main>
 
       {/* <1024px Mobile Bottom Dock */}
