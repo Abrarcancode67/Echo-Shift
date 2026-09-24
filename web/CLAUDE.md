@@ -7,6 +7,6 @@ In-Browser Real-Time Voice Changer & Audio Visualizer with live effects, recordi
 - Build:  `pnpm build`
 - Deploy: `git push origin main` (auto-deploys to R2 via GitHub Actions)
 
-Free, MIT-licensed, no tracking. For platform conventions, read
-https://freeappstore.online/skills.md
-before writing or changing anything.
+Free, MIT-licensed, no tracking. For platform conventions, read SKILLS.md:
+https://raw.githubusercontent.com/freeappstore-online/freeappstore/main/SKILLS.md
+(or https://freeappstore.online/skills.md) before writing or changing anything.
